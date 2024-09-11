@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.util.Map;
-import java.util.TreeMap;
+import com.KaanIsmetOkul.CurrencyConverter.token.CurrencyToken;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class CurrencyController {
@@ -18,16 +21,12 @@ public class CurrencyController {
 
     @GetMapping("/") // Define a path if needed
     public String getHomePage(Model model) {
-        TreeMap<String, Double> conversionRate = new TreeMap<>();
+        List<String> currencies = new ArrayList<>();
 
-
-
-
-
-
-
-
-        model.addAttribute("conversionForm", "Hello");
+        for (CurrencyToken currency : CurrencyToken.values()) {
+            currencies.add(currency.name());
+        }
+        model.addAttribute("currencies", currencies);
         return "Conversion"; // This should match the name of the HTML file without the .html extension
     }
 
@@ -38,7 +37,7 @@ public class CurrencyController {
             @RequestParam("fromCurrency") String fromCurrency,
             @RequestParam("toCurrency") String toCurrency,
             Model model) {
-            return "";
+            return "Convert";
 
 
     }
