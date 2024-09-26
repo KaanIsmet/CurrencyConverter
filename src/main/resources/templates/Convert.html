@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Currency Conversion Result</title>
 </head>
 <body>
-<h1>
-    Convert page
-</h1>
+<h1>Currency Conversion Result</h1>
 
+<!-- Display the result in this section -->
+<h2>
+    <!-- Use Thymeleaf to show the converted result -->
+    <span th:if="${conversionResult != null}">
+            The converted amount is: <span th:text="${conversionResult}"></span>
+        </span>
+
+    <!-- If no result, display a message -->
+    <span th:if="${conversionResult == null}">
+            No conversion result available.
+        </span>
+</h2>
 </body>
 </html>

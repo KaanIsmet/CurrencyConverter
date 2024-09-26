@@ -4,15 +4,15 @@ import java.lang.String;
 
 
 @Component
-public class CurrencyRate {
+public class Currency {
     private String fromCurrency;
     private double amount;
     private String toCurrency;
     private double currencyRate;
 
-    public CurrencyRate() {}
+    public Currency() {}
 
-    public CurrencyRate(String fromCurrency, double amount, String toCurrency, double currencyRate) {
+    public Currency(String fromCurrency, double amount, String toCurrency, double currencyRate) {
         this.fromCurrency = fromCurrency;
         this.amount = amount;
         this.toCurrency = toCurrency;

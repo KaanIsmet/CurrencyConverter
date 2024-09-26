@@ -1,5 +1,6 @@
 package com.KaanIsmetOkul.CurrencyConverter.controller;
 
+import com.KaanIsmetOkul.CurrencyConverter.model.Currency;
 import com.KaanIsmetOkul.CurrencyConverter.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class CurrencyController {
+
+
 
     @Autowired
     private CurrencyService currencyService;
@@ -36,10 +39,24 @@ public class CurrencyController {
             @RequestParam("amount") double amount,
             @RequestParam("fromCurrency") String fromCurrency,
             @RequestParam("toCurrency") String toCurrency,
-            Model model) {
-            return "Convert";
+            Model model)
+    {
+        //Get the Currency Rate from the api
+        //Use the fromCurrency for a StringBuilder Variable
+        //Have the StringBuilder Variable create a new Url to use the specific api
+        //test it to see if it worked
+
+        StringBuilder stringBuilder = new StringBuilder();
+        String url = currencyService.getApiUrl();
+        stringBuilder.append(url);
+        stringBuilder.append(fromCurrency);
 
 
+        System.out.println(stringBuilder.toString());
+
+
+        //Currency currency = new Currency(amount, fromCurrency, toCurrency);
+        return "Convert";
     }
 
 

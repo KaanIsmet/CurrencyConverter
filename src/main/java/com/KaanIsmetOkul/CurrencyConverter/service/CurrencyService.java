@@ -22,6 +22,10 @@ public class CurrencyService {
         //convert one currency to another
     }*/
 
+    public String getApiUrl() {
+        return apiUrl;
+    }
+
 
 
 
