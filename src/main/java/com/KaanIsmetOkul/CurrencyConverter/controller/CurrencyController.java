@@ -58,7 +58,12 @@ public class CurrencyController {
         double convertedAmount = currencyService.convert(currency);
 
         System.out.println(currency.getCurrencyRate());
-        System.out.println("The amount for " + toCurrency + "is " + convertedAmount);
+        System.out.println("The amount for " + toCurrency + " is " + convertedAmount);
+
+        model.addAttribute("fromCurrency", fromCurrency);
+        model.addAttribute("toCurrency", toCurrency);
+        model.addAttribute("amount", amount);
+        model.addAttribute("convertedAmount", convertedAmount);
         return "Convert";
     }
 

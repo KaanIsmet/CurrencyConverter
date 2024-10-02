@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Conversion Result</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>Currency Conversion Result</h1>
 
-<!-- Display the result in this section -->
-<h2>
-    <!-- Use Thymeleaf to show the converted result -->
-    <span th:if="${conversionResult != null}">
-            The converted amount is: <span th:text="${conversionResult}"></span>
-        </span>
+<!-- Navigation Bar -->
+<header class="navbar">
+    <h2>Currency Converter</h2>
+</header>
 
-    <!-- If no result, display a message -->
-    <span th:if="${conversionResult == null}">
-            No conversion result available.
-        </span>
-</h2>
+<!-- Main Content -->
+<main class="container">
+    <section class="card">
+        <h1>Conversion Result</h1>
+
+        <!-- Result Display -->
+        <form action="/" method="get">
+        <div class="result">
+            <p><strong>From:</strong>
+                <span th:text="${fromCurrency}"></span>
+                <span th:text="${amount}"></span>
+            </p>
+            <p><strong>To:</strong>
+                <span th:text="${toCurrency}"></span>
+                <span th:text="${convertedAmount}"></span>
+            </p>
+        </div>
+
+        <!-- Option to Convert Again -->
+        <button type="submit">
+            Convert again
+        </button>
+        </form>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Currency Converter App. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
