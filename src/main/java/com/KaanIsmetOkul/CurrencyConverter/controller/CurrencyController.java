@@ -51,11 +51,14 @@ public class CurrencyController {
         stringBuilder.append(url);
         stringBuilder.append(fromCurrency);
 
+        url = stringBuilder.toString();
 
-        System.out.println(stringBuilder.toString());
+        double currencyRate = currencyService.getCurrencyRate(url, toCurrency);
+        Currency currency = new Currency(fromCurrency, amount, toCurrency, currencyRate);
+        double convertedAmount = currencyService.convert(currency);
 
-
-        //Currency currency = new Currency(amount, fromCurrency, toCurrency);
+        System.out.println(currency.getCurrencyRate());
+        System.out.println("The amount for " + toCurrency + "is " + convertedAmount);
         return "Convert";
     }
 
