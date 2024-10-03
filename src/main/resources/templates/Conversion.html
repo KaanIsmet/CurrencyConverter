@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+    <!-- Use th:href to properly resolve the static CSS path -->
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <h2>Currency Converter</h2>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="card">
+        <h1>Select a Currency</h1>
+
+        <form action="/convert" method="post">
+            <label for="fromCurrency">Choose a currency:</label>
+            <select id="fromCurrency" name="fromCurrency">
+                <!-- Iterate over the list of currencies passed from the controller -->
+                <option th:each="currency : ${currencies}"
+                        th:value="${currency}"
+                        th:text="${currency}"></option>
+            </select>
+
+            <label for="amount">Enter the amount:</label>
+            <input id="amount" name="amount" type="number" step="0.01">
+
+            <label for="toCurrency">Choose a currency you want it to convert to:</label>
+            <select id="toCurrency" name="toCurrency">
+                <option th:each="toCurrency : ${currencies}"
+                        th:value="${toCurrency}"
+                        th:text="${toCurrency}"></option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 Currency Converter App
+</footer>
+
+</body>
+</html>
